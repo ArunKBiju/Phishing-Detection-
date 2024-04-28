@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Phishing Checker</title>
+    <style>
+        body {
+            background-image: url('path_to_your_image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            padding-top: 50px;
+            color: #f00;
+        }
+
+        #content-wrapper {
+            display: inline-block;
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the wrapper */
+        }
+
+        h1 {
+            font-weight: bold;
+            color: #ff6600; /* Fire-like color */
+            text-shadow: 2px 2px 4px rgba(255, 165, 0, 0.7), 2px 2px 4px rgba(255, 255, 0, 0.7);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffa500; /* Orange color */
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff4500; /* Darker orange color on hover */
+        }
+    </style>
 </head>
-<body>
+<body id="background">
+    <div id="content-wrapper">
+        <h1>Phishing Checker</h1>
+        <button onclick="checkPhishing()">Check Phishing</button>
+    </div>
     <script>
         var phishingKeywords = ["account", "login", "free", "verify", "confirm", "secure", "update", "bank", "password", "payment", "information", "permanent", "alert", "urgent", "limited", "suspended", "unauthorized", "renew", "validate", "resolution", "identity", "invoice", "billing", "reactivate", "suspend", "reset", "activation", "authentication", "unusual", "failed", "127", "loclx", "important", "phish", "fraud", "steal", "hijack", "compromise", "spoof", "manipulate", "scam", "deceptive", "exploit", "malicious", "breach", "attack", "danger", "risk", "impersonate", "access", "change", "critical"];
 
         function checkPhishing() {
             var url = prompt("Enter a website URL:");
             if (url !== null && url.trim() !== "") {
-            var isPhishing = phishingKeywords.some(function(keyword) {
+                var isPhishing = phishingKeywords.some(function(keyword) {
                     return url.toLowerCase().includes(keyword.toLowerCase());
                 });
                 if (isPhishing) {
@@ -24,9 +67,5 @@
             }
         }
     </script>
-
-    <h1>Phishing Checker</h1>
-    <button onclick="checkPhishing()">Check Phishing</button>
-<script src="script.js"></script>
 </body>
 </html>

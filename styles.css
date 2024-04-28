@@ -1,6 +1,11 @@
-body{
-  padding: 25px;
+body {
+    padding: 25px;
+    background-image: url('background_image.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 .title {
-	color: #5C6AC4;
+    color: #5C6AC4;
 }

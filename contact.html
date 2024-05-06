@@ -20,9 +20,22 @@
             flex-direction: column; /* Added to align items vertically */
         }
 
+        h1 {
+            font-size: 2em; /* Increase font size */
+            color: white; /* Ensure text is visible against background */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+        }
+
+        .button-container {
+            display: flex; /* Ensure buttons are displayed in a row */
+            justify-content: center; /* Center buttons horizontally */
+            gap: 10px; /* Add gap between buttons */
+            margin-top: 20px; /* Add space between heading and buttons */
+        }
+
         .button {
-            margin: 10px;
             padding: 10px 20px;
+            font-size: 1.2em; /* Increase font size of buttons */
             background-color: #007bff;
             color: white;
             border: none;
@@ -34,8 +47,10 @@
 
 <body>
     <h1>Contact Us</h1>
-    <button onclick="makeCall()">Call</button>
-    <button onclick="sendEmail()">Email</button>
+    <div class="button-container">
+        <button onclick="makeCall()">Call</button>
+        <button onclick="sendEmail()">Email</button>
+    </div>
 
     <script>
         function makeCall() {

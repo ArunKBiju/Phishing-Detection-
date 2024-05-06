@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('contact.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Added to align items vertically */
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Contact Us</h1>
+    <button onclick="makeCall()">Call</button>
+    <button onclick="sendEmail()">Email</button>
+
+    <script>
+        function makeCall() {
+            window.location.href = 'tel:18000000000';
+        }
+
+        function sendEmail() {
+            window.location.href = 'mailto:phishingdetectionproject@gmail.com';
+        }
+    </script>
+</body>
+
+</html>

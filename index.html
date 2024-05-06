@@ -1,72 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Phishing Detection Tool</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection Project</title>
     <style>
         body {
-            background-image: url('background_image.gif');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            text-align: center;
-            padding-top: 50px;
-            color: #f00;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-
-        #content-wrapper {
-            display: inline-block;
-            text-align: center; /* Center the content horizontally */
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the wrapper */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            background-color: #333;
+            padding: 10px;
         }
-
-        h1 {
-            font-weight: bold;
-            color: #ff6600; /* Fire-like color */
-            text-shadow: 2px 2px 4px rgba(255, 165, 0, 0.7), 2px 2px 4px rgba(255, 255, 0, 0.7);
-            margin-bottom: 20px; /* Add space below the heading */
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ffa500; /* Orange color */
+        .navbar-button {
+            background-color: #555;
+            color: white;
             border: none;
-            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
             cursor: pointer;
         }
-
-        button:hover {
-            background-color: #ff4500; /* Darker orange color on hover */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
         }
     </style>
 </head>
-<body id="background">
-    <div id="content-wrapper">
-        <h1>Phishing Detection Tool</h1>
-        <button onclick="checkPhishing()">Check</button> <!-- Change button text to "Check" -->
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="navbar-button">&#9776;</button>
+            <div class="dropdown-content">
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
     </div>
-    <script>
-        var phishingKeywords = ["account", "bankofamericaonline", "chase-login", "faceb00k", "twittter", "amaz0n", "ebay-login", "gmaill", "yah00mail", "irs.gov", "gov-support", "medicalc0ver", "healthcare-logins", "icloud-logins", "paypal-verification", "login.microsoftonline-secureaccount", "appleid-icloud", "amaz0nprime", "dropbox-login", "faceb00k-security", "google-drive-login", "linkedin-verify", "netflix-login-secure", "ups-delivery-confirmation", "visa-mastercard-secure", "yahoo-verification", "aol-mail-login", "chase-verify", "dropbox-secure", "ebay-verify", "facebook-login-verify", "google-account-security", "linkedin-login-verify", "microsoft-account-verify", "paypal-account-verify", "twitter-login-verify", "appleid-verify", "amazon-login-secure", "yahoo-mail-secure", "citi-bank-login", "dhl-delivery-confirmation", "discover-account-verify", "facebook-login-security", "google-drive-verify", "hotmail-account-verify", "instagram-login-verify", "microsoft-verify", "netflix-login-security", "paypal-login-secure", "twitter-account-verify", "apple-id-verify", "amazon-login-verify", "yahoo-verify", "icloud-login", "hotmail-account-security", "gmail-secure", "microsoft-account-security", "instagram-account-verify", "facebook-verify", "google-login-secure", "paypal-security", "ebay-secure", "twitter-login-security", "apple-id-security", "amazon-account-verify", "yahoo-account-verify", "linkedin-account-verify", "netflix-account-verify", "gmail-verify", "icloud-account-verify", "microsoft-login-secure", "instagram-login-security", "facebook-account-verify", "google-account-verify", "paypal-account-security", "ebay-account-verify", "twitter-account-verify", "apple-account-verify", "amazon-account-security", "yahoo-login-secure", "linkedin-login-security", "netflix-login-verify", "gmail-login-security", "icloud-login-secure", "microsoft-login-security", "instagram-account-security", "facebook-login-security", "google-login-security", "paypal-login-security", "ebay-login-security", "twitter-login-security", "apple-id-login-security", "amazon-login-security", "yahoo-login-security", "linkedin-login-security", "netflix-login-security", "gmail-login-security", "icloud-login-security", "microsoft-login-security", "instagram-login-security", "facebook-login-security","login", "fake", "followers", "free", "verify", "confirm", "secure", "update", "bank", "password", "payment", "information", "permanent", "alert", "urgent", "limited", "suspended", "unauthorized", "renew", "validate", "resolution", "identity", "invoice", "billing", "reactivate", "suspend", "reset", "activation", "authentication", "unusual", "failed", "127", "loclx", "important", "phish", "fraud", "steal", "hijack", "compromise", "spoof", "manipulate", "scam", "deceptive", "exploit", "malicious", "breach", "attack", "danger", "risk", "impersonate", "access", "change", "critical"];
-
-        function checkPhishing() {
-            var url = prompt("Enter a website URL:");
-            if (url !== null && url.trim() !== "") {
-                var isPhishing = phishingKeywords.some(function(keyword) {
-                    return url.toLowerCase().includes(keyword.toLowerCase());
-                });
-                if (isPhishing) {
-                    alert("The website '" + url + "' might be a phishing link.");
-                } else {
-                    alert("The website '" + url + "' is not a phishing link.");
-                }
-            } else {
-                alert("Invalid URL.");
-            }
-        }
-    </script>
+    <h1>Welcome to the Phishing Detection Project</h1>
+    <p>Your content here...</p>
 </body>
 </html>

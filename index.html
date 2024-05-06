@@ -1,69 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phishing Detection Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Phishing Detection Tool</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            background-color: #333;
-            padding: 10px;
-        }
-        .navbar-button {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 10px 20px;
+            background-image: url('background_image.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             text-align: center;
-            text-decoration: none;
+            padding-top: 50px;
+            color: #f00;
+        }
+
+        #content-wrapper {
             display: inline-block;
+            text-align: center; /* Center the content horizontally */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the wrapper */
+        }
+
+        h1 {
+            font-weight: bold;
+            color: #ff6600; /* Fire-like color */
+            text-shadow: 2px 2px 4px rgba(255, 165, 0, 0.7), 2px 2px 4px rgba(255, 255, 0, 0.7);
+            margin-bottom: 20px; /* Add space below the heading */
+        }
+
+        button {
+            padding: 10px 20px;
             font-size: 16px;
-            margin: 4px 2px;
+            background-color: #ffa500; /* Orange color */
+            border: none;
+            color: #fff;
             cursor: pointer;
         }
-        .dropdown-content {
+
+        button:hover {
+            background-color: #ff4500; /* Darker orange color on hover */
+        }
+
+        /* Styling for the horizontal lines */
+        .menu-lines {
+            position: absolute;
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            cursor: pointer;
+        }
+
+        .menu-lines div {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 5px 0;
+        }
+
+        /* Styling for the menu buttons */
+        .menu-buttons {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
-            min-width: 100px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            top: 40px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+            background-color: white;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
+
+        .menu-buttons button {
+            margin: 5px;
         }
     </style>
 </head>
-<body>
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="navbar-button">&#9776;</button>
-            <div class="dropdown-content">
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
+<body id="background">
+    <div id="content-wrapper">
+        <h1>Phishing Detection Tool</h1>
+        <!-- Menu lines for showing/hiding the menu buttons -->
+        <div class="menu-lines" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+        <!-- Menu buttons -->
+        <div class="menu-buttons" id="menu-buttons">
+            <button onclick="location.href='about.html'">About</button>
+            <button onclick="location.href='contact.html'">Contact</button>
+        </div>
+        <button onclick="checkPhishing()">Check</button> <!-- Change button text to "Check" -->
     </div>
-    <h1>Welcome to the Phishing Detection Project</h1>
-    <p>Your content here...</p>
+    <script>
+        var menuVisible = false;
+
+        function toggleMenu() {
+            menuVisible = !menuVisible;
+            var menuButtons = document.getElementById('menu-buttons');
+            if (menuVisible) {
+                menuButtons.style.display = 'block';
+            } else {
+                menuButtons.style.display = 'none';
+            }
+        }
+
+        var phishingKeywords = [ "account", "login", "verify", "confirm", "secure", "update", "bank", "password", "payment", "information", "permanent", "alert", "urgent", "limited", "suspended", "unauthorized", "renew", "validate", "resolution", "identity", "invoice", "billing", "reactivate", "suspend", "reset", "activation", "authentication", "unusual", "failed", "127", "loclx", "important", "phish", "fraud", "steal", "hijack", "compromise", "spoof", "manipulate", "scam", "deceptive", "exploit", "malicious", "breach", "attack", "danger", "risk", "impersonate", "access", "change", "critical" ];
+
+        function checkPhishing() {
+            var url = prompt("Enter a website URL:");
+            if (url !== null && url.trim() !== "") {
+                var isPhishing = phishingKeywords.some(function(keyword) {
+                    return url.toLowerCase().includes(keyword.toLowerCase());
+                });
+                if (isPhishing) {
+                    alert("The website '" + url + "' might be a phishing link.");
+                } else {
+                    alert("The website '" + url + "' is not a phishing link.");
+                }
+            } else {
+                alert("Invalid URL.");
+            }
+        }
+    </script>
 </body>
 </html>

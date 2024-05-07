@@ -1,22 +1,109 @@
-body {
-    padding: 25px;
-    background-image: url('background_image.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-.title {
-    color: #5C6AC4;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Detection Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('background_image.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            text-align: center;
+            padding-top: 50px;
+            color: #f00;
+        }
 
-#reportButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #ff0000; /* Red color */
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 20px; /* Add margin to separate the button */
-    display: none; /* Hide the button by default */
-}
+        #content-wrapper {
+            display: inline-block;
+            text-align: center; /* Center the content horizontally */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the wrapper */
+        }
+
+        h1 {
+            font-weight: bold;
+            color: #ff6600; /* Fire-like color */
+            text-shadow: 2px 2px 4px rgba(255, 165, 0, 0.7), 2px 2px 4px rgba(255, 255, 0, 0.7);
+            margin-bottom: 20px; /* Add space below the heading */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ffa500; /* Orange color */
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px; /* Add margin to separate the button */
+            display: none; /* Hide the button by default */
+        }
+
+        button:hover {
+            background-color: #ff4500; /* Darker orange color on hover */
+        }
+
+        .show {
+            display: block; /* Show the button */
+        }
+    </style>
+</head>
+
+<body id="background">
+    <div id="content-wrapper">
+        <h1>Phishing Detection Tool</h1>
+        <button id="checkButton" onclick="checkPhishing()">Check</button> <!-- Change button text to "Check" -->
+        <button id="reportButton" onclick="reportWebsite()" class="show">Report</button> <!-- New report button -->
+        <div id="toggleButtons" style="display:none;">
+            <button onclick="showAbout()">About</button>
+            <button onclick="showContact()">Contact</button>
+        </div>
+    </div>
+    <script>
+        var phishingKeywords = ["account", "login", "verify", "confirm", "secure", "update", "bank", "password", "payment", "information", "permanent", "alert", "urgent", "limited", "suspended", "unauthorized", "renew", "validate", "resolution", "identity", "invoice", "billing", "reactivate", "suspend", "reset", "activation", "authentication", "unusual", "failed", "127", "loclx", "important", "phish", "fraud", "steal", "hijack", "compromise", "spoof", "manipulate", "scam", "deceptive", "exploit", "malicious", "breach", "attack", "danger", "risk", "impersonate", "access", "change", "critical"];
+
+        function checkPhishing() {
+            var url = prompt("Enter a website URL:");
+            if (url !== null && url.trim() !== "") {
+                var isPhishing = phishingKeywords.some(function (keyword) {
+                    return url.toLowerCase().includes(keyword.toLowerCase());
+                });
+                if (isPhishing) {
+                    document.getElementById('reportButton').classList.add('show');
+                } else {
+                    alert("The website '" + url + "' is not a phishing link.");
+                    document.getElementById('reportButton').classList.remove('show');
+                }
+                document.getElementById('toggleButtons').style.display = 'none'; // Hide the toggle buttons
+            } else {
+                alert("Invalid URL.");
+            }
+        }
+
+        function reportWebsite() {
+            var url = prompt("Enter the website URL to report:");
+            if (url !== null && url.trim() !== "") {
+                // Send a report to the cyber cell
+                alert("Website '" + url + "' reported to the cyber cell.");
+            } else {
+                alert("Invalid URL.");
+            }
+        }
+
+        function showAbout() {
+            window.location.href = 'about.html';
+        }
+
+        function showContact() {
+            window.location.href = 'contact.html';
+        }
+    </script>
+</body>
+
+</html>

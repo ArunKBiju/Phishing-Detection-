@@ -47,6 +47,40 @@
         button:hover {
             background-color: #ff4500; /* Darker orange color on hover */
         }
+
+        /* Styling for the menu icon */
+        #menu-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999; /* Ensure the menu icon is on top of other content */
+            cursor: pointer;
+        }
+
+        /* Styling for the menu items */
+        .menu-items {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            display: none; /* Initially hide the menu items */
+            z-index: 9999; /* Ensure the menu items are on top of other content */
+        }
+
+        /* Styling for the menu item links */
+        .menu-items a {
+            display: block;
+            padding: 5px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Styling for the menu item links on hover */
+        .menu-items a:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 
@@ -55,6 +89,15 @@
         <h1>Phishing Detection Tool</h1>
         <button onclick="checkPhishing()">Check</button> <!-- Change button text to "Check" -->
         <button onclick="reportWebsite()">Report</button> <!-- New report button -->
+    </div>
+    <div id="menu-icon" onclick="toggleMenu()">
+        <hr>
+        <hr>
+        <hr>
+    </div>
+    <div class="menu-items" id="menu-items">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
     <script>
         var phishingKeywords = ["account", "login", "verify", "confirm", "secure", "update", "bank", "password", "payment", "information", "permanent", "alert", "urgent", "limited", "suspended", "unauthorized", "renew", "validate", "resolution", "identity", "invoice", "billing", "reactivate", "suspend", "reset", "activation", "authentication", "unusual", "failed", "127", "loclx", "important", "phish", "fraud", "steal", "hijack", "compromise", "spoof", "manipulate", "scam", "deceptive", "exploit", "malicious", "breach", "attack", "danger", "risk", "impersonate", "access", "change", "critical"];
@@ -82,6 +125,15 @@
                 alert("Website '" + url + "' reported to the cyber cell.");
             } else {
                 alert("Invalid URL.");
+            }
+        }
+
+        function toggleMenu() {
+            var menuItems = document.getElementById("menu-items");
+            if (menuItems.style.display === "none") {
+                menuItems.style.display = "block";
+            } else {
+                menuItems.style.display = "none";
             }
         }
     </script>

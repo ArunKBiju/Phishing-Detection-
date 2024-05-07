@@ -9,3 +9,14 @@ body {
 .title {
     color: #5C6AC4;
 }
+
+#reportButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff0000; /* Red color */
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px; /* Add margin to separate the button */
+    display: none; /* Hide the button by default */
+}

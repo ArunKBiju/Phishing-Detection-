@@ -87,8 +87,8 @@
 <body id="background">
     <div id="content-wrapper">
         <h1>Phishing Detection Tool</h1>
-        <button onclick="checkPhishing()">Check</button> <!-- Change button text to "Check" -->
-        <button onclick="reportWebsite()">Report</button> <!-- New report button -->
+        <button onclick="checkPhishing()">Check</button> 
+        <button onclick="reportWebsite()">Report</button> 
     </div>
     <div id="menu-icon" onclick="toggleMenu()">
         <hr>
@@ -121,7 +121,7 @@
         function reportWebsite() {
             var url = prompt("Enter the website URL to report:");
             if (url !== null && url.trim() !== "") {
-                // Send a report to the cyber cell
+                // Send a report to the cyber cell (won't work, chumma oru showoff)
                 alert("Website '" + url + "' reported to the cyber cell.");
             } else {
                 alert("Invalid URL.");

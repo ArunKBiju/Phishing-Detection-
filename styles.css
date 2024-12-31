@@ -11,7 +11,7 @@ body {
 }
 
 #reportButton {
-    margin-top: 20px; /* Add margin to move the button to the next 3rd line */
-    color: red; /* Change the button color to red */
-    display: none; /* Hide the button by default */
+    margin-top: 20px;
+    color: red; 
+    display: none;
 }

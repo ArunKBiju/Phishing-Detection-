@@ -20,44 +20,42 @@
 
         #content-wrapper {
             display: inline-block;
-            text-align: center; /* Center the content horizontally */
+            text-align: center; 
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Light background color with transparency */
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for the wrapper */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
 
         h1 {
             font-weight: bold;
-            color: #ff6600; /* Fire-like color */
+            color: #ff6600;
             text-shadow: 2px 2px 4px rgba(255, 165, 0, 0.7), 2px 2px 4px rgba(255, 255, 0, 0.7);
-            margin-bottom: 20px; /* Add space below the heading */
+            margin-bottom: 20px; 
         }
 
         button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ffa500; /* Orange color */
+            background-color: #ffa500;
             border: none;
             color: #fff;
             cursor: pointer;
-            margin-top: 20px; /* Add margin to separate the button */
+            margin-top: 20px;
         }
 
         button:hover {
-            background-color: #ff4500; /* Darker orange color on hover */
+            background-color: #ff4500; 
         }
 
-        /* Styling for the menu icon */
         #menu-icon {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 9999; /* Ensure the menu icon is on top of other content */
+            z-index: 9999;
             cursor: pointer;
         }
 
-        /* Styling for the menu items */
         .menu-items {
             position: fixed;
             top: 50px;
@@ -65,11 +63,10 @@
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 5px;
             padding: 10px;
-            display: none; /* Initially hide the menu items */
-            z-index: 9999; /* Ensure the menu items are on top of other content */
+            display: none; 
+            z-index: 9999; 
         }
 
-        /* Styling for the menu item links */
         .menu-items a {
             display: block;
             padding: 5px;
@@ -77,7 +74,6 @@
             text-decoration: none;
         }
 
-        /* Styling for the menu item links on hover */
         .menu-items a:hover {
             background-color: #f0f0f0;
         }
@@ -121,7 +117,7 @@
         function reportWebsite() {
             var url = prompt("Enter the website URL to report:");
             if (url !== null && url.trim() !== "") {
-                // Send a report to the cyber cell (won't work, chumma oru showoff)
+                // Send a report to the cyber cell (won't work, chumma vecheknu)
                 alert("Website '" + url + "' reported to the cyber cell.");
             } else {
                 alert("Invalid URL.");
